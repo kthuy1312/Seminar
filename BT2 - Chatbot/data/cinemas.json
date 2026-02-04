@@ -1,0 +1,207 @@
+{
+    "cinemas": [
+        {
+            "id": 1,
+            "name": "CGV Landmark 81",
+            "name_short": "CGV Landmark 81",
+            "location": "Ho Chi Minh City",
+            "address": "Vinhomes Central Park, Ward 22, Binh Thanh District",
+            "district": "Binh Thanh",
+            "coordinates": {
+                "latitude": 10.7282,
+                "longitude": 106.7168
+            },
+            "rating": 4.8,
+            "review_count": 2540,
+            "phone": "028 7777 8888",
+            "website": "https://www.cgv.vn",
+            "distance": 2.5,
+            "amenities": [
+                "Parking",
+                "Restaurant",
+                "Premium Sound",
+                "4K Screen"
+            ],
+            "screen_count": 16,
+            "status": "open"
+        },
+        {
+            "id": 2,
+            "name": "BHD Star Vincom Center",
+            "name_short": "BHD Vincom",
+            "location": "Ho Chi Minh City",
+            "address": "167 Dong Khoi, Ward Ben Nghe, District 1",
+            "district": "District 1",
+            "coordinates": {
+                "latitude": 10.7913,
+                "longitude": 106.7033
+            },
+            "rating": 4.7,
+            "review_count": 1890,
+            "phone": "028 2222 3333",
+            "website": "https://www.bhd.vn",
+            "distance": 3.1,
+            "amenities": [
+                "Parking",
+                "Shopping Center",
+                "IMAX",
+                "Premium Seating"
+            ],
+            "screen_count": 12,
+            "status": "open"
+        },
+        {
+            "id": 3,
+            "name": "Galaxy Nguyễn Huệ",
+            "name_short": "Galaxy Nguyễn Huệ",
+            "location": "Ho Chi Minh City",
+            "address": "116 Nguyen Hue, District 1",
+            "district": "District 1",
+            "coordinates": {
+                "latitude": 10.7755,
+                "longitude": 106.7031
+            },
+            "rating": 4.6,
+            "review_count": 1650,
+            "phone": "028 3838 3838",
+            "website": "https://www.galaxycine.vn",
+            "distance": 3.5,
+            "amenities": [
+                "Parking",
+                "Restaurant",
+                "4K Projection",
+                "VIP Lounge"
+            ],
+            "screen_count": 10,
+            "status": "open"
+        },
+        {
+            "id": 4,
+            "name": "CGV Aeon Tân Phú",
+            "name_short": "CGV Aeon Tân Phú",
+            "location": "Ho Chi Minh City",
+            "address": "AEON Mall Tân Phú, Tân Phú District",
+            "district": "Tan Phu",
+            "coordinates": {
+                "latitude": 10.7712,
+                "longitude": 106.6341
+            },
+            "rating": 4.5,
+            "review_count": 1200,
+            "phone": "028 9999 0000",
+            "website": "https://www.cgv.vn",
+            "distance": 5.2,
+            "amenities": [
+                "Parking",
+                "Shopping Center",
+                "Kids Room"
+            ],
+            "screen_count": 10,
+            "status": "open"
+        },
+        {
+            "id": 5,
+            "name": "Lotte Cinema Cantavil",
+            "name_short": "Lotte Cantavil",
+            "location": "Ho Chi Minh City",
+            "address": "Cantavil An Phu, District 2",
+            "district": "District 2",
+            "coordinates": {
+                "latitude": 10.8084,
+                "longitude": 106.7665
+            },
+            "rating": 4.7,
+            "review_count": 980,
+            "phone": "028 5555 6666",
+            "website": "https://www.lottekids.com",
+            "distance": 4.8,
+            "amenities": [
+                "Parking",
+                "Premium Sound",
+                "VIP Theater",
+                "Restaurant"
+            ],
+            "screen_count": 8,
+            "status": "open"
+        },
+        {
+            "id": 6,
+            "name": "BHD Star Crescent Mall",
+            "name_short": "BHD Crescent",
+            "location": "Ho Chi Minh City",
+            "address": "Crescent Mall, Quận 7",
+            "district": "District 7",
+            "coordinates": {
+                "latitude": 10.7323,
+                "longitude": 106.7375
+            },
+            "rating": 4.6,
+            "review_count": 1150,
+            "phone": "028 7777 9999",
+            "website": "https://www.bhd.vn",
+            "distance": 6.1,
+            "amenities": [
+                "Parking",
+                "Shopping Mall",
+                "Family Friendly"
+            ],
+            "screen_count": 9,
+            "status": "open"
+        },
+        {
+            "id": 7,
+            "name": "Galaxy Sơn Ki",
+            "name_short": "Galaxy Sơn Ki",
+            "location": "Ho Chi Minh City",
+            "address": "TTTM Sơn Ki, District 3",
+            "district": "District 3",
+            "coordinates": {
+                "latitude": 10.7869,
+                "longitude": 106.6881
+            },
+            "rating": 4.4,
+            "review_count": 890,
+            "phone": "028 4444 5555",
+            "website": "https://www.galaxycine.vn",
+            "distance": 3.8,
+            "amenities": [
+                "Parking",
+                "Affordable Pricing"
+            ],
+            "screen_count": 7,
+            "status": "open"
+        },
+        {
+            "id": 8,
+            "name": "Lotte Cinema Diamond Plaza",
+            "name_short": "Lotte Diamond",
+            "location": "Ho Chi Minh City",
+            "address": "Diamond Plaza, District 1",
+            "district": "District 1",
+            "coordinates": {
+                "latitude": 10.7858,
+                "longitude": 106.7048
+            },
+            "rating": 4.8,
+            "review_count": 2100,
+            "phone": "028 8888 9999",
+            "website": "https://www.lottekids.com",
+            "distance": 2.9,
+            "amenities": [
+                "Parking",
+                "Luxury Seating",
+                "Premium Snacks",
+                "VIP Service"
+            ],
+            "screen_count": 11,
+            "status": "open"
+        }
+    ],
+    "metadata": {
+        "total_count": 8,
+        "last_updated": "2026-02-04",
+        "city": "Ho Chi Minh City",
+        "country": "Vietnam",
+        "source": "Cinema Database"
+    }
+}

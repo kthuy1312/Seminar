@@ -1,0 +1,229 @@
+{
+  "name": "cinema-recommend-workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        1312,
+        464
+      ],
+      "id": "6306ccc0-b7d2-48bb-bf70-69f937496602",
+      "name": "Telegram Trigger",
+      "webhookId": "18a0d760-50c3-437a-bf76-686432f84d44",
+      "credentials": {
+        "telegramApi": {
+          "id": "uECBHAgMuZ8fzG3X",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{$json.message.text}}",
+                    "rightValue": "xin chào",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    },
+                    "id": "dd2aa3b8-713d-4f92-a7a3-74e1b33c94c0"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "24cf5d3d-4f4e-4aef-ad81-60ab193a595b",
+                    "leftValue": "={{$json.message.text}}",
+                    "rightValue": "phim",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "125199d5-6fd9-4c79-a505-d742d4324b1c",
+                    "leftValue": "={{$json.message.text}}",
+                    "rightValue": "rạp",
+                    "operator": {
+                      "type": "string",
+                      "operation": "contains"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        1600,
+        448
+      ],
+      "id": "95a4f2af-855b-4921-ae1e-a29294d2001b",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "chatId": "={{$json.message.chat.id}}",
+        "text": "=🎬 *Gợi ý phim hay trong tuần*  \n\n1️⃣ Dune: Part Two  \n   • Thể loại: Khoa học viễn tưởng  \n   • Nội dung: Cuộc chiến sinh tồn trên hành tinh Arrakis  \n\n2️⃣ Kung Fu Panda 4  \n   • Thể loại: Hoạt hình, hài  \n   • Nội dung: Po trở lại với hành trình mới  \n\n3️⃣ Godzilla x Kong  \n   • Thể loại: Hành động  \n   • Nội dung: Cuộc đối đầu của hai quái vật huyền thoại  \n\n👉 Bạn muốn mình *gợi ý rạp chiếu phim* không?\n",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2000,
+        464
+      ],
+      "id": "f3107ea6-96c8-4dda-8cd9-ebee2ce1de07",
+      "name": "Send – Movie Recommendation",
+      "webhookId": "c9dfb3cb-2c99-4547-809c-b8aaed1185d7",
+      "credentials": {
+        "telegramApi": {
+          "id": "uECBHAgMuZ8fzG3X",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{$json.message.chat.id}}",
+        "text": "=🏢 *Gợi ý rạp chiếu phim chất lượng*  \n\n🎥 CGV Cinemas  \n• Phòng chiếu hiện đại  \n• Âm thanh – hình ảnh tốt  \n\n🎥 Lotte Cinema  \n• Giá vé hợp lý  \n• Ghế ngồi thoải mái  \n\n🎥 Galaxy Cinema  \n• Phù hợp sinh viên  \n• Nhiều khuyến mãi  \n\n👉 Bạn muốn mình *gợi ý phim hay trong tuần* không?\n",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2000,
+        672
+      ],
+      "id": "07db986c-961f-4605-a950-3ffbb5693519",
+      "name": "Send – Cinema Recommendation",
+      "webhookId": "c9dfb3cb-2c99-4547-809c-b8aaed1185d7",
+      "credentials": {
+        "telegramApi": {
+          "id": "uECBHAgMuZ8fzG3X",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{$json.message.chat.id}}",
+        "text": "=Xin chào 👋  \nMình là trợ lý xem phim của bạn 🎬  \n\nMình có thể giúp bạn:\n🍿 Gợi ý các bộ phim hay trong tuần  \n🏢 Đề xuất rạp chiếu phim phù hợp gần bạn  \n\n👉 Bạn muốn tìm *phim* hay *rạp*?",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2000,
+        288
+      ],
+      "id": "c66d491b-538a-43bd-b36e-6e38387107c5",
+      "name": "Send – Greeting & Guide",
+      "webhookId": "c9dfb3cb-2c99-4547-809c-b8aaed1185d7",
+      "credentials": {
+        "telegramApi": {
+          "id": "uECBHAgMuZ8fzG3X",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Send – Greeting & Guide",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send – Movie Recommendation",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send – Cinema Recommendation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "16e9b191-3d35-415f-8751-99cfac3af121",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "712e25804e8f2a5ecb4f3e44b9f9b65f4e90f13c23b2fa04c7f8907b502bcbeb"
+  },
+  "id": "wbE9r5Nd3N9150HuwLef-",
+  "tags": []
+}

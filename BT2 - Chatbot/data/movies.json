@@ -1,0 +1,100 @@
+{
+    "movies": [
+        {
+            "id": 1,
+            "title": "Oppenheimer",
+            "title_vi": "Oppenheimer",
+            "genre": "Biography/Drama",
+            "year": 2023,
+            "rating": 8.5,
+            "popularity": 95,
+            "description": "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.",
+            "description_vi": "Câu chuyện về nhà khoa học Mỹ J. Robert Oppenheimer và vai trò của ông trong sự phát triển của bom nguyên tử.",
+            "director": "Christopher Nolan",
+            "cast": "Cillian Murphy, Robert Downey Jr., Emily Blunt",
+            "runtime": 180,
+            "release_date": "2023-07-21"
+        },
+        {
+            "id": 2,
+            "title": "Killers of the Flower Moon",
+            "title_vi": "Sát Thủ Của Hoa Hồng",
+            "genre": "Crime/Drama",
+            "year": 2023,
+            "rating": 8.2,
+            "popularity": 88,
+            "description": "When oil is discovered on the land of the Osage Nation, the Osage people are murdered one by one.",
+            "description_vi": "Khi phát hiện dầu mỏ trên đất đai của bộ tộc Osage, người Osage bị giết hàng loạt.",
+            "director": "Martin Scorsese",
+            "cast": "Leonardo DiCaprio, Robert De Niro, Lily Gladstone",
+            "runtime": 206,
+            "release_date": "2023-10-20"
+        },
+        {
+            "id": 3,
+            "title": "Barbie",
+            "title_vi": "Barbie",
+            "genre": "Comedy/Fantasy",
+            "year": 2023,
+            "rating": 7.9,
+            "popularity": 92,
+            "description": "Barbie doll comes to life and enters the real world looking for true meaning to her existence.",
+            "description_vi": "Búp bê Barbie sống động và bước vào thế giới thực tìm kiếm ý nghĩa thực sự cho cuộc sống của mình.",
+            "director": "Greta Gerwig",
+            "cast": "Margot Robbie, Ryan Gosling, Will Ferrell",
+            "runtime": 114,
+            "release_date": "2023-07-21"
+        },
+        {
+            "id": 4,
+            "title": "The Zone of Interest",
+            "title_vi": "Vùng Lợi Ích",
+            "genre": "Drama/History",
+            "year": 2023,
+            "rating": 7.8,
+            "popularity": 75,
+            "description": "A Nazi commandant and his wife navigate their moral decline and dark cruelties in a luxurious home overlooking a concentration camp.",
+            "description_vi": "Một sĩ quan Nazi và vợ của ông điều hướng sự suy thoái đạo đức và độc ác tối tăm trong một ngôi nhà sang trọng nhìn ra trại tập trung.",
+            "director": "Jonathan Glazer",
+            "cast": "Christian Friedel, Sandra Hüller",
+            "runtime": 105,
+            "release_date": "2023-11-10"
+        },
+        {
+            "id": 5,
+            "title": "American Fiction",
+            "title_vi": "Tiểu Thuyết Mỹ",
+            "genre": "Comedy/Drama",
+            "year": 2023,
+            "rating": 8.0,
+            "popularity": 82,
+            "description": "A frustrated novelist tries to help his ill sister while entangled in family dysfunction.",
+            "description_vi": "Một nhà văn bị hôi thúc cố gắng giúp đỡ người chị gái bệnh tật của anh trong khi bị vướng vào sự rối loạn gia đình.",
+            "director": "Cord Jefferson",
+            "cast": "Jeffrey Wright, Tracee Ellis Ross, Sterling K. Brown",
+            "runtime": 117,
+            "release_date": "2023-10-20"
+        },
+        {
+            "id": 6,
+            "title": "Past Lives",
+            "title_vi": "Kiếp Trước",
+            "genre": "Drama/Romance",
+            "year": 2023,
+            "rating": 7.9,
+            "popularity": 78,
+            "description": "Two people meet again after many years and reconnect with their past lives.",
+            "description_vi": "Hai người gặp lại sau nhiều năm và kết nối lại với những kiếp sống của họ.",
+            "director": "Celine Song",
+            "cast": "Greta Lee, Teo Yoo, John Magary",
+            "runtime": 109,
+            "release_date": "2023-06-02"
+        }
+    ],
+    "metadata": {
+        "total_count": 6,
+        "last_updated": "2026-02-04",
+        "source": "Sample Movie Database",
+        "week": "February 2026"
+    }
+}
