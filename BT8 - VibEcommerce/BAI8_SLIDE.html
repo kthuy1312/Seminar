@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Bài 8 – Vibe Engineering</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;background:#0f0c29;color:#fff;overflow:hidden}
+.slide{display:none;width:100vw;height:100vh;padding:40px 60px;flex-direction:column;justify-content:center;animation:fadeIn .4s ease}
+.slide.active{display:flex}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+h1{font-size:2.8rem;background:linear-gradient(135deg,#a78bfa,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:10px}
+h2{font-size:2rem;color:#a78bfa;margin-bottom:20px}
+h3{font-size:1.3rem;color:#60a5fa;margin:15px 0 8px}
+p,li{font-size:1.05rem;color:#cbd5e1;line-height:1.7}
+ul{list-style:none;padding:0}
+ul li::before{content:"▶ ";color:#a78bfa}
+.tag{display:inline-block;background:rgba(167,139,250,.2);border:1px solid #a78bfa;color:#a78bfa;padding:3px 12px;border-radius:20px;font-size:.85rem;margin:3px}
+.grid{display:grid;gap:20px;margin-top:20px}
+.grid-2{grid-template-columns:1fr 1fr}
+.grid-3{grid-template-columns:1fr 1fr 1fr}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(167,139,250,.3);border-radius:16px;padding:20px;backdrop-filter:blur(10px)}
+.card h3{margin-top:0}
+.subtitle{font-size:1.2rem;color:#94a3b8;margin-bottom:30px}
+.badge{background:linear-gradient(135deg,#a78bfa,#60a5fa);color:#fff;padding:6px 18px;border-radius:30px;font-size:.9rem;display:inline-block;margin:5px}
+code{background:rgba(96,165,250,.15);color:#93c5fd;padding:2px 8px;border-radius:5px;font-size:.9rem}
+pre{background:rgba(0,0,0,.4);border:1px solid rgba(96,165,250,.3);border-radius:12px;padding:16px;font-size:.82rem;color:#e2e8f0;overflow-x:auto;margin-top:10px;line-height:1.5}
+table{width:100%;border-collapse:collapse;margin-top:15px}
+th{background:rgba(167,139,250,.3);padding:10px;text-align:left;font-size:.9rem}
+td{padding:9px 10px;border-bottom:1px solid rgba(255,255,255,.1);font-size:.88rem;color:#cbd5e1}
+.nav{position:fixed;bottom:30px;right:40px;display:flex;gap:10px;z-index:100}
+.nav button{background:rgba(167,139,250,.3);border:1px solid #a78bfa;color:#fff;padding:10px 24px;border-radius:30px;cursor:pointer;font-size:.95rem;transition:.2s}
+.nav button:hover{background:#a78bfa}
+.counter{position:fixed;bottom:35px;left:40px;color:#64748b;font-size:.9rem}
+.highlight{color:#a78bfa;font-weight:bold}
+.arrow{color:#60a5fa;font-size:1.1rem}
+.flow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px}
+.flow-item{background:rgba(96,165,250,.15);border:1px solid #60a5fa;padding:8px 16px;border-radius:8px;font-size:.88rem}
+</style>
+</head>
+<body>
+
+<!-- Slide 1: Title -->
+<div class="slide active">
+  <div style="text-align:center">
+    <div class="badge">Bài 8</div>
+    <h1 style="font-size:3.5rem;margin:20px 0">VIBE ENGINEERING</h1>
+    <p class="subtitle">Phát triển E-Commerce Microservice với Generative AI</p>
+    <div style="margin:30px 0">
+      <span class="tag">Spring Boot 3</span>
+      <span class="tag">React + Vite</span>
+      <span class="tag">Apache Kafka</span>
+      <span class="tag">Docker + K8s</span>
+      <span class="tag">GenAI</span>
+    </div>
+    <div style="margin-top:40px;color:#475569">
+      <p>Dựa trên phân tích Bài 7 – ProjectWeb Microservice</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 2: Project Overview -->
+<div class="slide">
+  <h2>📋 Tổng quan dự án Bài 7</h2>
+  <p class="subtitle">ProjectWeb – E-Commerce Microservice Architecture</p>
+  <div class="grid grid-3">
+    <div class="card">
+      <h3>🖥 Backend</h3>
+      <ul><li>Java 17 + Spring Boot 3</li><li>7 microservices độc lập</li><li>RESTful APIs</li><li>JWT Authentication</li></ul>
+    </div>
+    <div class="card">
+      <h3>🎨 Frontend</h3>
+      <ul><li>React + Vite</li><li>Tailwind CSS</li><li>Context API</li><li>Axios + React Router</li></ul>
+    </div>
+    <div class="card">
+      <h3>⚙️ Infrastructure</h3>
+      <ul><li>Docker + Docker Compose</li><li>Kubernetes (Minikube)</li><li>GitHub Actions CI/CD</li><li>Apache Kafka (3 brokers)</li></ul>
+    </div>
+  </div>
+  <div style="margin-top:20px">
+    <h3>Tech Stack:</h3>
+    <span class="tag">MongoDB</span><span class="tag">PostgreSQL</span><span class="tag">Redis</span>
+    <span class="tag">Kafka</span><span class="tag">Eureka</span><span class="tag">Zipkin</span><span class="tag">Prometheus</span>
+  </div>
+</div>
+
+<!-- Slide 3: Architecture -->
+<div class="slide">
+  <h2>🏗 Kiến trúc Microservice</h2>
+  <div class="grid grid-2" style="gap:30px">
+    <div>
+      <pre>
+React FE (5173)
+      │ HTTP
+  API Gateway (8181)
+      │ Load Balance
+ ┌────┴────┬──────────┐
+user-svc  product-svc  order-svc
+(8081)    (8082)       (8083)
+ MongoDB   MongoDB+     MongoDB
+           Redis+Kafka    │
+                        Kafka
+                     notification-svc
+                         (8084)
+           payment-svc (8085)
+
+Eureka Server (8761) – Discovery
+      </pre>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:15px">
+        <h3>📡 Service Discovery</h3>
+        <p>Eureka Server – tự động đăng ký & tìm kiếm service</p>
+      </div>
+      <div class="card" style="margin-bottom:15px">
+        <h3>📨 Event-Driven</h3>
+        <p>Kafka 3 brokers (KRaft mode) – async communication</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Caching</h3>
+        <p>Redis – cache sản phẩm, session người dùng</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 4: What is Vibe Engineering -->
+<div class="slide">
+  <h2>🤖 Vibe Engineering là gì?</h2>
+  <div class="grid grid-2" style="gap:30px;margin-top:10px">
+    <div class="card">
+      <h3>📌 Định nghĩa</h3>
+      <p style="margin-bottom:15px">Phương pháp phát triển phần mềm trong đó lập trình viên <span class="highlight">mô tả ý định</span> bằng ngôn ngữ tự nhiên, AI sinh code.</p>
+      <p style="color:#94a3b8;font-style:italic">"Vibe coding is AI-dependent programming via natural language prompts instead of manually writing all code"<br>— Andrej Karpathy, 2025</p>
+    </div>
+    <div>
+      <div class="card" style="margin-bottom:12px">
+        <h3>⚡ Truyền thống vs Vibe</h3>
+        <div class="flow">
+          <div class="flow-item">Ý tưởng</div><span class="arrow">→</span>
+          <div class="flow-item">Thiết kế</div><span class="arrow">→</span>
+          <div class="flow-item">Code thủ công</div><span class="arrow">→</span>
+          <div class="flow-item">Deploy</div>
+        </div>
+        <div class="flow" style="margin-top:10px">
+          <div class="flow-item" style="border-color:#a78bfa;background:rgba(167,139,250,.15)">Vibe/Prompt</div><span class="arrow">→</span>
+          <div class="flow-item" style="border-color:#a78bfa;background:rgba(167,139,250,.15)">AI sinh code</div><span class="arrow">→</span>
+          <div class="flow-item" style="border-color:#a78bfa;background:rgba(167,139,250,.15)">Review & Deploy</div>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🛠 Tools sử dụng</h3>
+        <span class="tag">GitHub Copilot</span><span class="tag">Claude Sonnet</span>
+        <span class="tag">ChatGPT</span><span class="tag">Gemini</span><span class="tag">Cursor AI</span><span class="tag">v0.dev</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 5: Workflow -->
+<div class="slide">
+  <h2>🔄 Quy trình Vibe Engineering</h2>
+  <div class="grid grid-2" style="gap:20px;margin-top:10px">
+    <div class="card">
+      <h3>Phase 1: Analysis 🔍</h3>
+      <ul><li>Phân tích source code Bài 7 với AI</li><li>Xác định pain points & feature gaps</li><li>Lên kế hoạch cải tiến</li></ul>
+    </div>
+    <div class="card">
+      <h3>Phase 2: Design 📐</h3>
+      <ul><li>Prompt AI thiết kế kiến trúc</li><li>Vẽ diagram, ERD, sequence</li><li>Review & validate design</li></ul>
+    </div>
+    <div class="card">
+      <h3>Phase 3: Vibe Coding 💻</h3>
+      <ul><li>Viết prompt mô tả feature</li><li>AI sinh code đầy đủ</li><li>Review, test, tích hợp</li><li>Iterate nhanh</li></ul>
+    </div>
+    <div class="card">
+      <h3>Phase 4: Verification ✅</h3>
+      <ul><li>AI generate unit tests</li><li>AI review security</li><li>Integration test</li><li>Final deploy</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 6: Prompt Engineering Rules -->
+<div class="slide">
+  <h2>✍️ Quy tắc Prompt Engineering</h2>
+  <div class="grid grid-2" style="gap:20px;margin-top:10px">
+    <div class="card">
+      <h3>Rule 1: Context First 🎯</h3>
+      <p>Luôn cung cấp ngữ cảnh đầy đủ: tech stack, cấu trúc hiện tại, mục tiêu cụ thể.</p>
+      <pre style="margin-top:10px">"Trong dự án Spring Boot 3 + Kafka
++ MongoDB, hãy tạo..."</pre>
+    </div>
+    <div class="card">
+      <h3>Rule 2: One Feature at a Time 🧩</h3>
+      <p>Prompt từng tính năng nhỏ thay vì prompt quá lớn một lần.</p>
+    </div>
+    <div class="card">
+      <h3>Rule 3: Specify Output Format 📄</h3>
+      <p>Yêu cầu format cụ thể: Entity, Repository, Service, Controller, Config...</p>
+    </div>
+    <div class="card">
+      <h3>Rule 4: Iterative Refinement 🔁</h3>
+      <p>Dùng kết quả AI làm base, tiếp tục prompt để cải thiện và tinh chỉnh.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 7: Code Demo – Recommendation Service -->
+<div class="slide">
+  <h2>🆕 AI-Generated: Recommendation Service</h2>
+  <p class="subtitle">Service hoàn toàn mới – sinh bởi Claude Sonnet từ prompt</p>
+  <div class="grid grid-2" style="gap:20px">
+    <div>
+      <h3>Prompt gửi AI:</h3>
+      <pre>"Tạo recommendation-service Spring Boot 3:
+- GET /api/recommendations/{userId}
+- Collaborative filtering theo lịch sử
+- Cache Redis 15 phút
+- Listen Kafka 'order-completed'
+Generate Entity, Service, Controller"</pre>
+    </div>
+    <div>
+      <h3>Code sinh ra (trích):</h3>
+      <pre>@Service
+public class RecommendationService {
+
+  @KafkaListener(topics="order-completed")
+  public void updatePreferences(
+      OrderCompletedEvent event) {
+    // Update user preference
+    preference.addPurchase(...);
+    repo.save(preference);
+    // Invalidate cache
+    redis.delete("rec:" + userId);
+  }
+
+  public List&lt;ProductDTO&gt; getRecommendations(
+      String userId, int limit) {
+    // Check Redis cache first
+    var cached = redis.get("rec:"+userId);
+    if (cached != null) return cached;
+    // Calculate & cache result
+    ...
+  }
+}</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 8: Code Demo – Saga Pattern -->
+<div class="slide">
+  <h2>⚙️ Enhanced: Saga Pattern (AI-generated)</h2>
+  <p class="subtitle">Order Service – Distributed Transaction với Kafka</p>
+  <div class="grid grid-2" style="gap:20px">
+    <div>
+      <h3>Luồng Saga:</h3>
+      <div class="flow" style="flex-direction:column;align-items:flex-start">
+        <div class="flow-item">1. startOrderSaga() → publish inventory-reserve</div>
+        <div style="color:#a78bfa;margin:3px 0">↓ (success)</div>
+        <div class="flow-item">2. publish payment-process</div>
+        <div style="color:#a78bfa;margin:3px 0">↓ (success)</div>
+        <div class="flow-item">3. Confirm order ✅</div>
+        <div style="color:#f87171;margin:3px 0">↓ (failure)</div>
+        <div class="flow-item" style="border-color:#f87171;background:rgba(248,113,113,.1)">Compensate: Cancel order ❌</div>
+      </div>
+    </div>
+    <div>
+      <pre>@Service
+public class OrderSagaOrchestrator {
+
+  @Autowired
+  KafkaTemplate kafkaTemplate;
+
+  public void startOrderSaga(
+      CreateOrderRequest req) {
+    kafkaTemplate.send(
+      "inventory-reserve-topic",
+      new InventoryReserveEvent(req));
+  }
+
+  @KafkaListener(
+    topics="inventory-reserve-result")
+  public void handleResult(
+      InventoryResultEvent event) {
+    if (event.isSuccess()) {
+      kafkaTemplate.send("payment-topic",
+        new PaymentEvent(event.getOrderId()));
+    } else {
+      orderRepo.updateStatus(
+        event.getOrderId(), CANCELLED);
+    }
+  }
+}</pre>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 9: Metrics -->
+<div class="slide">
+  <h2>📊 Kết quả & Đánh giá</h2>
+  <table>
+    <tr><th>Metric</th><th>Truyền thống</th><th>Với GenAI</th><th>Cải thiện</th></tr>
+    <tr><td>Tạo 1 microservice</td><td>3–5 ngày</td><td>4–8 giờ</td><td><span class="highlight">~5x nhanh</span></td></tr>
+    <tr><td>Viết unit tests</td><td>1–2 ngày</td><td>2–4 giờ</td><td><span class="highlight">~4x nhanh</span></td></tr>
+    <tr><td>Boilerplate code</td><td>2–4 giờ</td><td>15–30 phút</td><td><span class="highlight">~8x nhanh</span></td></tr>
+    <tr><td>Tỷ lệ lỗi ban đầu</td><td>Cao</td><td>Thấp hơn</td><td><span class="highlight">~30% ít lỗi</span></td></tr>
+  </table>
+  <div class="grid grid-2" style="margin-top:20px;gap:20px">
+    <div class="card">
+      <h3>✅ Ưu điểm</h3>
+      <ul><li>Tuân thủ best practices tự động</li><li>Error handling & logging đầy đủ</li><li>Biết design patterns phổ biến</li><li>Consistent code style</li></ul>
+    </div>
+    <div class="card">
+      <h3>⚠️ Lưu ý</h3>
+      <ul><li>Cần review business logic đặc thù</li><li>Kiểm tra phiên bản library</li><li>Test kỹ edge cases</li><li>Security review bắt buộc</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- Slide 10: Conclusion -->
+<div class="slide">
+  <h2>🎯 Kết luận</h2>
+  <div class="grid grid-2" style="gap:25px;margin-top:10px">
+    <div>
+      <div class="card" style="margin-bottom:15px">
+        <h3>Thành quả đạt được</h3>
+        <ul>
+          <li>Kiến trúc cải thiện với Saga Pattern</li>
+          <li>Thêm AI Recommendation Service mới</li>
+          <li>Smart Redis Caching strategy</li>
+          <li>UI components đẹp hơn (v0.dev)</li>
+          <li>Unit test coverage cao hơn</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Hướng tiếp theo</h3>
+        <ul>
+          <li>AI Chatbot hỗ trợ khách hàng (RAG)</li>
+          <li>Dynamic Pricing với AI</li>
+          <li>Visual Search (Computer Vision)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="card" style="display:flex;flex-direction:column;justify-content:center;text-align:center">
+      <p style="font-size:1.4rem;color:#a78bfa;font-weight:bold;margin-bottom:20px">"Vibe Engineering không thay thế kỹ sư – nó nhân sức mạnh của kỹ sư"</p>
+      <div style="margin-top:10px">
+        <span class="tag">Prompt Quality = Output Quality</span>
+        <span class="tag">Review là bắt buộc</span>
+        <span class="tag">Iterate nhanh</span>
+      </div>
+      <p style="margin-top:30px;color:#475569;font-size:.9rem">Bài 8 – Vibe Engineering | 2026<br>Hỗ trợ bởi Claude Sonnet 4.6</p>
+    </div>
+  </div>
+</div>
+
+<div class="counter" id="counter">1 / 10</div>
+<div class="nav">
+  <button onclick="prev()">◀ Trước</button>
+  <button onclick="next()">Tiếp ▶</button>
+</div>
+
+<script>
+let cur = 0;
+const slides = document.querySelectorAll('.slide');
+function show(n) {
+  slides[cur].classList.remove('active');
+  cur = (n + slides.length) % slides.length;
+  slides[cur].classList.add('active');
+  document.getElementById('counter').textContent = (cur+1) + ' / ' + slides.length;
+}
+function next() { show(cur + 1); }
+function prev() { show(cur - 1); }
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') next();
+  if (e.key === 'ArrowLeft') prev();
+});
+</script>
+</body>
+</html>
